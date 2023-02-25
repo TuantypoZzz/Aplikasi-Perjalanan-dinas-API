@@ -1,0 +1,13 @@
+[12:42:17] 200 - 119.7859ms POST /api/v1/auth/login
+[12:42:32] 200 - 48.2498ms GET /api/v1/Department
+[12:42:41] 200 - 60.7904ms POST /api/v1/Department/
+[12:42:49] 200 - 36.9977ms GET /api/v1/Department
+[12:43:09] 200 - 20.3814ms GET /api/v1/Handle
+[12:43:16] 200 - 36.9211ms POST /api/v1/Handle
+[12:43:30] 200 - 25.2604ms GET /api/v1/Handle
+[15:24:29] 200 - 103.3019ms POST /api/v1/auth/login
+[15:24:43] 500 - 21.5071ms POST /api/v1/employee/
+[15:25:29] 500 - 16.2897ms POST /api/v1/employee/
+[15:25:45] 500 - 61.1383ms POST /api/v1/employees/
+[15:30:43] 401 -      0s GET /api/v1/Department
+[15:30:47] 200 - 35.2853ms GET /api/v1/Department
