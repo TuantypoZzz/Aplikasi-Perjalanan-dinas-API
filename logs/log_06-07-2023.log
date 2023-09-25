@@ -1,0 +1,15 @@
+[11:34:47] 200 - 78.903ms POST /api/v1/auth/login
+[11:35:32] 400 - 39.249ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[11:35:39] 200 - 29.73ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[11:40:12] 400 - 28.2967ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[11:42:24] 500 - 32.7033ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[12:13:25] 400 - 32.2874ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:21:38] 200 - 46.0268ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:24:08] 200 - 40.9689ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:25:36] 200 - 38.7814ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:36:40] 200 - 30.4112ms GET /api/v1/employees/
+[14:37:12] 200 - 50.6123ms GET /api/v1/perjalanan-dinas/rekap-perdin
+[15:56:48] 200 - 48.3029ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[15:59:16] 200 - 42.5322ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[15:59:19] 400 - 11.9487ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[16:00:54] 200 - 45.2193ms POST /api/v1/perjalanan-dinas/laporan-perdin

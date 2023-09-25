@@ -1,0 +1,14 @@
+[10:03:42] 200 - 96.6193ms POST /api/v1/auth/login
+[10:04:00] 200 - 48.9952ms POST /api/v1/perjalanan-dinas/spt
+[10:27:50] 200 - 74.303ms POST /api/v1/perjalanan-dinas/telaah
+[10:28:04] 200 - 74.9018ms GET /api/v1/perjalanan-dinas/telaah
+[10:39:10] 200 - 41.032ms POST /api/v1/perjalanan-dinas/spt
+[10:50:55] 200 - 41.5673ms GET /api/v1/perjalanan-dinas/telaah
+[11:02:59] 200 - 84.4768ms POST /api/v1/perjalanan-dinas/spt
+[11:36:50] 200 - 34.5953ms GET /api/v1/employees/
+[11:37:07] 200 - 51.7172ms POST /api/v1/perjalanan-dinas/spt
+[11:37:48] 200 - 36.5253ms GET /api/v1/perjalanan-dinas/spt
+[11:41:03] 200 - 22.2199ms GET /api/v1/perjalanan-dinas/spt
+[11:41:22] 200 - 33.6816ms GET /api/v1/perjalanan-dinas/spt
+[11:42:06] 200 - 47.9665ms GET /api/v1/perjalanan-dinas/spt
+[11:42:28] 200 - 33.471ms GET /api/v1/perjalanan-dinas/spt

@@ -23,18 +23,18 @@ func (r *departmentRepositoryImpl) Insert(ctx context.Context, department entity
 }
 
 func (r *departmentRepositoryImpl) Update(ctx context.Context, department entity.Department) entity.Department {
-	err := r.DB.WithContext(ctx).Where("id = ?", department.Id).Updates(&department).Error
+	err := r.DB.WithContext(ctx).Where("department_id = ?", department.Id).Updates(&department).Error
 	exception.PanicLogging(err)
 	return department
 }
 
 func (r *departmentRepositoryImpl) Delete(ctx context.Context, department entity.Department) {
-	r.DB.WithContext(ctx).Where("id =?", department.Id).Delete(&department)
+	r.DB.WithContext(ctx).Where("department_id =?", department.Id).Delete(&department)
 }
 
 func (r *departmentRepositoryImpl) FindById(ctx context.Context, id string) entity.Department {
 	var department entity.Department
-	result := r.DB.WithContext(ctx).Where("id = ?", id).First(&department)
+	result := r.DB.WithContext(ctx).Where("department_id = ?", id).First(&department)
 	if result.RowsAffected == 0 {
 		panic(exception.NotFoundError{
 			Message: "Department Not Found",

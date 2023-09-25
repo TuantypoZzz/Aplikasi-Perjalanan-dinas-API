@@ -47,12 +47,13 @@ func NewDatabase() *gorm.DB {
 	sqlDB, err := db.DB()
 	exception.PanicLogging(err)
 
-	sqlDB.SetMaxOpenConns(maxPoolOpen)
-	sqlDB.SetMaxIdleConns(maxPoolIdle)
-	sqlDB.SetConnMaxLifetime(time.Duration(rand.Int31n(int32(maxPollLifeTime))) * time.Millisecond)
+	sqlDB.SetMaxOpenConns(maxPoolOpen)                                                              //pengaturan berapa jumlah koneksi maksimal yang dibuat
+	sqlDB.SetMaxIdleConns(maxPoolIdle)                                                              //pengaturan berapa jumlah koneksi minimal yang dibuat
+	sqlDB.SetConnMaxLifetime(time.Duration(rand.Int31n(int32(maxPollLifeTime))) * time.Millisecond) //pengaturan berapa lama koneksi boleh digunakan
 
 	//autoMigrate
-	err = db.AutoMigrate(&entity.User{},
+	err = db.AutoMigrate(
+		&entity.User{},
 		&entity.Role{},
 		&entity.Permission{},
 		&entity.Todo{},
@@ -68,6 +69,8 @@ func NewDatabase() *gorm.DB {
 		&entity.Telaah{},
 		&entity.Spt{},
 		&entity.Sppd{},
+		&entity.Activity{},
+		&entity.DokProofPerdin{},
 	)
 	exception.PanicLogging(err)
 

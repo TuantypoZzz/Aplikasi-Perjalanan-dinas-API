@@ -7,9 +7,9 @@ import (
 )
 
 type EmployeeService interface {
-	Create(ctx context.Context, employeeModel model.CreateEmployeeModel, user entity.User) entity.Employee
-	// update(ctx context.Context, employeeModel model.UpdateEmployee, id string, user entity.User) model.UpdateEmployee
-	// Delete(ctx context.Context, id string)
-	// FindById(ctx context.Context, id string) model.EmployeeModel
-	// FindAll(ctx context.Context) []model.EmployeeModel
+	Create(ctx context.Context, employeeModel model.CreateEmployeeModel, user entity.User, photo string)
+	Update(ctx context.Context, employeeModel model.UpdateEmployee, id string, user entity.User, photo string)
+	Delete(ctx context.Context, id string)
+	FindById(ctx context.Context, id string) model.EmployeeModel
+	FindAll(ctx context.Context) []model.EmployeeModel
 }

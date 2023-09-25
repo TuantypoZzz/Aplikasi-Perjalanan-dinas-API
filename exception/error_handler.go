@@ -40,6 +40,15 @@ func ErrorHandler(c *fiber.Ctx, err error) error {
 		})
 	}
 
+	_, unsupportedMedia := err.(UnsupportedMediaError)
+	if unsupportedMedia {
+		return c.Status(fiber.StatusUnsupportedMediaType).JSON(model.GeneralResponse{
+			Code:    415,
+			Message: "Unsupport Media Type",
+			Data:    err.Error(),
+		})
+	}
+
 	return c.Status(fiber.StatusInternalServerError).JSON(model.GeneralResponse{
 		Code:    500,
 		Message: "General Error",

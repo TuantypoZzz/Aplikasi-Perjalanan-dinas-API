@@ -12,6 +12,8 @@ type Lumpsum struct {
 	Lingkup         string    `gorm:"column:lingkup"`
 	BiayaHarian     string    `gorm:"column:biaya_harian"`
 	BiayaPenginapan string    `gorm:"column:biaya_penginapan"`
+	CreatedBy       string    `gorm:"column:created_by"`
+	UpdatedBy       string    `gorm:"column:updated_by"`
 	DeletedAt       gorm.DeletedAt
 	CreatedAt       time.Time
 	UpdatedAt       time.Time

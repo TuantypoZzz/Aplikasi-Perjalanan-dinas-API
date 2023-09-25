@@ -8,17 +8,17 @@ import (
 )
 
 type Telaah struct {
-	Id        uuid.UUID `gorm:"primaryKey;column:telaah_id;type:varchar(36)"`
-	NoTelaah  string    `gorm:"column:no_telaah"`
-	TglTelaah string    `gorm:"column:tgl_telaah"`
+	Id        uuid.UUID  `gorm:"primaryKey;column:telaah_id;type:varchar(36)"`
+	NoTelaah  string     `gorm:"column:no_telaah"`
+	TglTelaah *time.Time `gorm:"column:tgl_telaah"`
 	DeletedAt gorm.DeletedAt
 	CreatedAt time.Time
 	UpdatedAt time.Time
 
-	PejabatPPTKId           uuid.UUID
+	ActivityId              uuid.UUID
 	BussinessTravelReportId uuid.UUID
 
-	Employee               Employee              `gorm:"foreignKey:PejabatPPTKId"`
+	Activity               Activity              `gorm:"foreignKey:ActivityId"`
 	BussinessTravelReports BussinessTravelReport `gorm:"foreignKey:BussinessTravelReportId"`
 }
 

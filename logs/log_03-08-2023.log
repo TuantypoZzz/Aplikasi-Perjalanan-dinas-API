@@ -1,0 +1,14 @@
+[16:09:04] 200 - 69.6945ms POST /api/v1/auth/login
+[16:09:27] 200 - 214.4502ms POST /api/v1/department/
+[16:11:35] 200 - 29.1364ms POST /api/v1/department/
+[16:12:14] 200 - 58.6229ms POST /api/v1/handle/
+[16:13:07] 200 - 21.2787ms POST /api/v1/employees/
+[16:14:22] 401 -      0s GET /api/v1/employees/
+[16:14:31] 200 - 25.1107ms GET /api/v1/employees/
+[16:14:41] 200 - 28.3222ms GET /api/v1/employees/4b07caa7-16fa-4c2d-9b5c-cdd84122d1ad
+[16:31:47] 200 - 34.0953ms POST /api/v1/employees/
+[16:34:05] 200 - 30.137ms PUT /api/v1/employees/4b07caa7-16fa-4c2d-9b5c-cdd84122d1ad
+[16:37:44] 200 - 40.0654ms GET /api/v1/employees/
+[16:38:03] 401 -      0s DELETE /api/v1/employees/069d95b7-c658-4204-9817-f493a1a25f15
+[16:38:10] 200 - 30.5589ms DELETE /api/v1/employees/069d95b7-c658-4204-9817-f493a1a25f15
+[16:39:43] 200 - 18.513ms GET /api/v1/employees/

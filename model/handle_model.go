@@ -1,11 +1,10 @@
 package model
 
 type HandleModel struct {
-	Id            string `json:"id"`
-	NamaPangkat   string `json:"nama_pangkat"`
-	NamaGolongan  string `json:"nama_golongan"`
-	Tingkat       string `json:"tingkat"`
-	EmployeeModel string `json:"employee_model"`
+	Id           string `json:"id"`
+	NamaPangkat  string `json:"nama_pangkat"`
+	NamaGolongan string `json:"nama_golongan"`
+	Tingkat      string `json:"tingkat"`
 }
 
 type CreateHandle struct {

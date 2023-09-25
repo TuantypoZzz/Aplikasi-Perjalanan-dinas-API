@@ -1,12 +1,21 @@
 package model
 
 type EmployeeModel struct {
-	Id         string `json:"id"`
-	Name       string `json:"name"`
-	NIP        string `json:"nip"`
-	Pangkat    string `json:"pangkat"`
-	Department string `json:"Department"`
-	Bidang     string `json:"bidang"`
+	Id           string `json:"id"`
+	Name         string `json:"name"`
+	NIP          string `json:"nip"`
+	Pangkat      string `json:"pangkat"`
+	Jabatan      string `json:"jabatan"`
+	Bidang       string `json:"Bidang"`
+	Seksi        string `json:"seksi"`
+	UnitKerja    string `json:"unit_kerja"`
+	JenisKelamin string `json:"jenis_kelamin"`
+	TempatLahir  string `json:"tempat_lahir"`
+	TanggalLahir string `json:"tanggal_lahir"`
+	NoTlpn       string `json:"nomor_tlpn"`
+	Email        string `json:"email"`
+	Alamat       string `json:"alamat"`
+	Foto         string `json:"foto"`
 }
 
 type CreateEmployeeModel struct {
@@ -27,17 +36,19 @@ type CreateEmployeeModel struct {
 }
 
 type UpdateEmployee struct {
-	Name         string `json:"name" validate:"required,max=32"`
-	NIP          string `json:"nip" validate:"required,max=32"`
-	IdPangkat    string `json:"id_pangkat" validate:"required,max=32"`
-	IdDepartment string `json:"id_Department" validate:"required,max=32"`
-	Bidang       string `json:"bidang" validate:"required,max=32"`
-	Seksi        string `json:"seksi" validate:"required,max=32"`
-	UnitKerja    string `json:"unit_kerja" validate:"required,max=32"`
-	JenisKelamin string `json:"jenis_kelamin" validate:"required,max=32"`
-	TempatLahir  string `json:"tempat_lahir" validate:"required,max=32"`
+	Id           string `json:"id"`
+	Name         string `json:"nama"`
+	NIP          string `json:"nip"`
+	IdPangkat    string `json:"id_pangkat"`
+	IdJabatan    string `json:"id_jabatan"`
+	Bidang       string `json:"bidang"`
+	Seksi        string `json:"seksi"`
+	UnitKerja    string `json:"unit_kerja"`
+	JenisKelamin string `json:"jenis_kelamin"`
+	TempatLahir  string `json:"tempat_lahir"`
 	TanggalLahir string `json:"tanggal_lahir"`
-	NoTlpn       string `json:"no_tlpn" validate:"required,max=13"`
-	Email        string `json:"email" validate:"required,max=32"`
-	Alamat       string `json:"alamat" validate:"required,max=32"`
+	NoTlpn       string `json:"nomor_tlpn"`
+	Email        string `json:"email"`
+	Alamat       string `json:"alamat"`
+	Foto         string `json:"foto"`
 }

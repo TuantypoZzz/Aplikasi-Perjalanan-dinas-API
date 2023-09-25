@@ -1,0 +1,5 @@
+[09:19:38] 200 - 89.4686ms POST /api/v1/auth/login
+[09:19:50] 200 - 16.9514ms GET /api/v1/kegiatan/
+[09:20:01] 401 -      0s GET /api/v1/kegiatan/
+[09:20:07] 200 - 19.9337ms GET /api/v1/kegiatan/
+[09:21:18] 200 - 18.6031ms GET /api/v1/perjalanan-dinas/telaah

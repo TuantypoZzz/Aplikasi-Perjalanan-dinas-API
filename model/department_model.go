@@ -2,13 +2,13 @@ package model
 
 type DepartmentModel struct {
 	Id             string `json:"id"`
-	DepartmentName string `json:"department_name"`
+	DepartmentName string `json:"nama_jabatan"`
 }
 
 type CreateDepartment struct {
-	DepartmentName string `json:"department_name" validate:"required,max=32"`
+	DepartmentName string `json:"nama_jabatan"`
 }
 
 type UpdateDepartment struct {
-	DepartmentName string `json:"department_name" validate:"required,max=32"`
+	DepartmentName string `json:"nama_jabatan"`
 }

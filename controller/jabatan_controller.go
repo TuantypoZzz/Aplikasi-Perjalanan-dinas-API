@@ -49,11 +49,10 @@ func (c DepartmentController) Update(ct *fiber.Ctx) error {
 	user := ct.Locals("userData").(entity.User)
 
 	id := ct.Params("id")
-	response := c.DepartmentService.Update(ct.Context(), request, id, user)
+	c.DepartmentService.Update(ct.Context(), request, id, user)
 	return ct.JSON(model.GeneralResponse{
 		Code:    200,
 		Message: "Department has been Updated",
-		Data:    response,
 	})
 }
 

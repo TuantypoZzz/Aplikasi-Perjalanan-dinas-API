@@ -8,9 +8,9 @@ import (
 )
 
 type Sppd struct {
-	Id        uuid.UUID `gorm:"primaryKey;column:sppd_id;type:varchar(36)"`
-	NoSppd    string    `gorm:"column:no_sppd"`
-	TglSppd   string    `gorm:"column:tgl_sppd"`
+	Id        uuid.UUID  `gorm:"primaryKey;column:sppd_id;type:varchar(36)"`
+	NoSppd    string     `gorm:"column:no_sppd"`
+	TglSppd   *time.Time `gorm:"column:tgl_sppd"`
 	DeletedAt gorm.DeletedAt
 	CreatedAt time.Time
 	UpdatedAt time.Time

@@ -17,7 +17,8 @@ func NewUserRepositoryImpl(DB *gorm.DB) UserRepository {
 }
 
 func (repository userRepositoryImpl) Create(ctx context.Context, user entity.User) entity.User {
-	err := repository.DB.WithContext(ctx).Omit("Todos").Create(&user).Error
+	err := repository.DB.WithContext(ctx).
+		Omit("Todos").Create(&user).Error
 	exception.PanicLogging(err)
 	return user
 }
@@ -39,7 +40,9 @@ func (userRepository userRepositoryImpl) Authentication(ctx context.Context, use
 
 func (repository userRepositoryImpl) FindById(ctx context.Context, username string) entity.User {
 	var user entity.User
-	result := repository.DB.WithContext(ctx).Preload("Roles").Preload("Permissions").Where("username = ?", username).First(&user)
+	result := repository.DB.WithContext(ctx).
+		Preload("Roles").Preload("Permissions").
+		Where("username = ?", username).First(&user)
 	if result.RowsAffected == 0 {
 		panic(exception.NotFoundError{
 			Message: "User Not Found",

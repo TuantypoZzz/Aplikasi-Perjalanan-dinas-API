@@ -21,7 +21,7 @@ func NewEmployeeRepositoryImpl(employeeRepository *repository.EmployeeRepository
 	return &employeeServiceImpl{EmployeeRepository: *employeeRepository}
 }
 
-func (s *employeeServiceImpl) Create(ctx context.Context, employeeModel model.CreateEmployeeModel, user entity.User) entity.Employee {
+func (s *employeeServiceImpl) Create(ctx context.Context, employeeModel model.CreateEmployeeModel, user entity.User, photo string) {
 	validation.Validate(employeeModel)
 
 	gender, err := enum.NewGender(employeeModel.Gender)
@@ -35,7 +35,7 @@ func (s *employeeServiceImpl) Create(ctx context.Context, employeeModel model.Cr
 		Name:                   employeeModel.Name,
 		NIP:                    employeeModel.NIP,
 		HandleId:               uuid.MustParse(employeeModel.HandleId),
-		DepartmenId:            uuid.MustParse(employeeModel.DepartmenId),
+		DepartmentId:           uuid.MustParse(employeeModel.DepartmenId),
 		Field:                  employeeModel.Field,
 		Section:                employeeModel.Section,
 		UnitWork:               employeeModel.UnitWork,
@@ -45,78 +45,113 @@ func (s *employeeServiceImpl) Create(ctx context.Context, employeeModel model.Cr
 		Phone:                  employeeModel.Phone,
 		Email:                  employeeModel.Email,
 		Address:                employeeModel.Address,
-		Photo:                  employeeModel.Photo,
+		Photo:                  photo,
+		CreatedBy:              user.Username,
 		BussinessTravelReports: []entity.BussinessTravelReport{},
 	}
 
-	employee = s.EmployeeRepository.Insert(ctx, employee)
-
-	return employee
+	s.EmployeeRepository.Insert(ctx, employee)
 }
 
-// func (service *employeeServiceImpl) Update(ctx context.Context, employeeModel model.UpdateEmployee, id string, user entity.User) model.UpdateEmployee {
-// 	validation.Validate(employeeModel)
+func (service *employeeServiceImpl) Update(ctx context.Context, employeeModel model.UpdateEmployee, id string, user entity.User, photo string) {
+	validation.Validate(employeeModel)
 
-// 	employee := entity.Employee{
-// 		Id:           uuid.MustParse(id),
-// 		Name:         employeeModel.Name,
-// 		NIP:          employeeModel.NIP,
-// 		Bidang:       employeeModel.Bidang,
-// 		Seksi:        employeeModel.Seksi,
-// 		UnitKerja:    employeeModel.UnitKerja,
-// 		JenisKelamin: employeeModel.JenisKelamin,
-// 		TempatLahir:  employeeModel.TempatLahir,
-// 		TanggalLahir: employeeModel.TanggalLahir,
-// 		NoTlpn:       employeeModel.NoTlpn,
-// 		Email:        employeeModel.Email,
-// 		Alamat:       employeeModel.Alamat,
-// 	}
-// 	employees := service.EmployeeRepository.Update(ctx, employee)
-// 	return model.UpdateEmployee{
-// 		Name:         employees.Name,
-// 		NIP:          employees.NIP,
-// 		Bidang:       employees.Bidang,
-// 		Seksi:        employees.Seksi,
-// 		UnitKerja:    employees.UnitKerja,
-// 		JenisKelamin: employees.JenisKelamin,
-// 		TempatLahir:  employees.TempatLahir,
-// 		TanggalLahir: employees.TanggalLahir,
-// 		NoTlpn:       employees.NoTlpn,
-// 		Email:        employees.Email,
-// 		Alamat:       employees.Alamat,
-// 	}
-// }
+	gender, err := enum.NewGender(employeeModel.JenisKelamin)
+	exception.PanicLogging(err)
 
-// func (service *employeeServiceImpl) Delete(ctx context.Context, id string) {
-// 	employees := service.EmployeeRepository.FindById(ctx, id)
-// 	service.EmployeeRepository.Delete(ctx, employees)
-// }
+	birtDate, err := time.Parse("2006-01-02", employeeModel.TanggalLahir)
+	exception.PanicLogging(err)
 
-// func (service *employeeServiceImpl) FindAll(ctx context.Context) (response []model.EmployeeModel) {
-// 	employees := service.EmployeeRepository.FindAll(ctx)
+	employee := entity.Employee{
+		Id:                     uuid.MustParse(id),
+		Name:                   employeeModel.Name,
+		NIP:                    employeeModel.NIP,
+		HandleId:               uuid.MustParse(employeeModel.IdPangkat),
+		DepartmentId:           uuid.MustParse(employeeModel.IdJabatan),
+		Field:                  employeeModel.Bidang,
+		Section:                employeeModel.Seksi,
+		UnitWork:               employeeModel.UnitKerja,
+		Gender:                 gender.String(),
+		BirthPlace:             employeeModel.TempatLahir,
+		BirthDate:              birtDate,
+		Phone:                  employeeModel.NoTlpn,
+		Email:                  employeeModel.Email,
+		Address:                employeeModel.Alamat,
+		Photo:                  photo,
+		UpdatedBy:              user.Username,
+		BussinessTravelReports: []entity.BussinessTravelReport{},
+	}
+	service.EmployeeRepository.Update(ctx, employee)
+	// return &model.UpdateEmployee{
+	// 	Name:         employees.Name,
+	// 	NIP:          employees.NIP,
+	// 	IdPangkat:    employees.Handle.NamaPangkat + "/" + employee.Handle.NamaGolongan,
+	// 	IdJabatan:    employees.Department.DepartmentName,
+	// 	Bidang:       employees.Field,
+	// 	Seksi:        employees.Section,
+	// 	UnitKerja:    employees.UnitWork,
+	// 	JenisKelamin: employees.Gender,
+	// 	TempatLahir:  employees.BirthPlace,
+	// 	TanggalLahir: employees.BirthDate.String(),
+	// 	NoTlpn:       employees.Phone,
+	// 	Email:        employees.Email,
+	// 	Alamat:       employees.Address,
+	// 	Foto:         employees.Photo,
+	// }
+}
 
-// 	if len(employees) == 0 {
-// 		return []model.EmployeeModel{}
-// 	}
+func (service *employeeServiceImpl) Delete(ctx context.Context, id string) {
+	employees := service.EmployeeRepository.FindById(ctx, id)
+	service.EmployeeRepository.Delete(ctx, employees)
+}
 
-// 	for _, employee := range employees {
-// 		response = append(response, model.EmployeeModel{
-// 			Id:     employee.Id.String(),
-// 			Name:   employee.Name,
-// 			NIP:    employee.NIP,
-// 			Bidang: employee.Bidang,
-// 		})
-// 	}
-// 	return response
-// }
+func (service *employeeServiceImpl) FindAll(ctx context.Context) (response []model.EmployeeModel) {
+	employees := service.EmployeeRepository.FindAll(ctx)
 
-// func (service *employeeServiceImpl) FindById(ctx context.Context, id string) model.EmployeeModel {
-// 	employees := service.EmployeeRepository.FindById(ctx, id)
+	if len(employees) == 0 {
+		return []model.EmployeeModel{}
+	}
 
-// 	return model.EmployeeModel{
-// 		Id:     employees.Id.String(),
-// 		Name:   employees.Name,
-// 		NIP:    employees.NIP,
-// 		Bidang: employees.Bidang,
-// 	}
-// }
+	for _, employee := range employees {
+		response = append(response, model.EmployeeModel{
+			Id:           employee.Id.String(),
+			Name:         employee.Name,
+			NIP:          employee.NIP,
+			Pangkat:      employee.Handle.NamaPangkat + "/" + employee.Handle.NamaGolongan,
+			Jabatan:      employee.Department.DepartmentName,
+			Bidang:       employee.Field,
+			Seksi:        employee.Section,
+			UnitKerja:    employee.UnitWork,
+			JenisKelamin: employee.Gender,
+			TempatLahir:  employee.BirthPlace,
+			TanggalLahir: employee.BirthDate.String(),
+			NoTlpn:       employee.Phone,
+			Email:        employee.Email,
+			Alamat:       employee.Address,
+			Foto:         employee.Photo,
+		})
+	}
+	return response
+}
+
+func (service *employeeServiceImpl) FindById(ctx context.Context, id string) model.EmployeeModel {
+	employees := service.EmployeeRepository.FindById(ctx, id)
+
+	return model.EmployeeModel{
+		Id:           employees.Id.String(),
+		Name:         employees.Name,
+		NIP:          employees.NIP,
+		Pangkat:      employees.Handle.NamaPangkat + "/" + employees.Handle.NamaGolongan,
+		Jabatan:      employees.Department.DepartmentName,
+		Bidang:       employees.Field,
+		Seksi:        employees.Section,
+		UnitKerja:    employees.UnitWork,
+		JenisKelamin: employees.Gender,
+		TempatLahir:  employees.BirthPlace,
+		TanggalLahir: employees.BirthDate.String(),
+		NoTlpn:       employees.Phone,
+		Email:        employees.Email,
+		Alamat:       employees.Address,
+		Foto:         employees.Photo,
+	}
+}

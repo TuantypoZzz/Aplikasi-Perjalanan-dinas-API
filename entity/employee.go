@@ -21,14 +21,17 @@ type Employee struct {
 	Email      string    `gorm:"column:email"`
 	Address    string    `gorm:"type:text;column:address"`
 	Photo      string    `gorm:"type:text;column:photo"`
-	DeletedAt  gorm.DeletedAt
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
+	CreatedBy  string    `gorm:"column:created_by"`
+	UpdatedBy  string    `gorm:"column:updated_by"`
 
-	DepartmenId uuid.UUID
-	HandleId    uuid.UUID
+	DeletedAt gorm.DeletedAt
+	CreatedAt time.Time
+	UpdatedAt time.Time
 
-	Department Department `gorm:"foreignkey:DepartmenId"`
+	DepartmentId uuid.UUID
+	HandleId     uuid.UUID
+
+	Department Department `gorm:"foreignkey:DepartmentId"`
 	Handle     Handle     `gorm:"foreignkey:HandleId"`
 
 	BussinessTravelReports []BussinessTravelReport `gorm:"many2many:perdin_employee;"`

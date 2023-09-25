@@ -1,0 +1,7 @@
+[11:26:29] 200 - 86.818ms POST /api/v1/auth/login
+[11:35:51] 200 - 23.8075ms GET /api/v1/perjalanan-dinas/rekap-perdin
+[11:42:50] 200 - 23.7911ms GET /api/v1/perjalanan-dinas/sppd
+[11:48:40] 200 - 31.2564ms GET /api/v1/perjalanan-dinas/sppd
+[11:57:45] 200 - 25.9372ms GET /api/v1/perjalanan-dinas/sppd
+[12:09:41] 200 - 37.7667ms GET /api/v1/perjalanan-dinas/sppd
+[12:11:13] 200 - 26.6396ms GET /api/v1/perjalanan-dinas/sppd

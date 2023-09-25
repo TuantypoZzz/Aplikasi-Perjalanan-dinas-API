@@ -17,7 +17,7 @@ func NewGender(val string) (Gender, error) {
 	gender := Gender{value: val}
 	if val != "" {
 		if !gender.isAllowedGender() {
-			return Gender{}, errors.New("Unsupport Gender ")
+			return Gender{}, errors.New("unsupport gender ")
 		}
 	}
 	return gender, nil

@@ -1,0 +1,8 @@
+[09:42:28] 200 - 74.0264ms POST /api/v1/auth/login
+[10:24:42] 200 - 65.8593ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:27:19] 200 - 66.9821ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:29:36] 200 - 54.228ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:36:23] 200 - 72.249ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:40:19] 200 - 68.9918ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:46:20] 200 - 77.3796ms POST /api/v1/perjalanan-dinas/rincian-perdin
+[10:46:46] 200 - 64.1861ms POST /api/v1/perjalanan-dinas/rincian-perdin

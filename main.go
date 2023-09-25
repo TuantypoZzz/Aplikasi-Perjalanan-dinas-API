@@ -27,6 +27,17 @@ func main() {
 	DepartmentRepository := repository.NewDepartmentRepositoryImpl(database)
 	HandleRepository := repository.NewHandleRepositoryImpl(database)
 	employeeRepository := repository.NewEmployeeRepositoryImpl(database)
+	lumpsumRepository := repository.NewLumpsumRepositoryImpl(database)
+	activityRepository := repository.NewActivityRepositoryImpl(database)
+	perdinRepository := repository.NewPerdinRepositoryImpl(database)
+	telaahRepository := repository.NewTelaahRepositoryImpl(database)
+	sptRepository := repository.NewSptRepositoryImpl(database)
+	sppdRepository := repository.NewSppdRepositoryImpl(database)
+	transportRepository := repository.NewTransportRepositoryImpl(database)
+	hotelRepository := repository.NewAccomodationRepositoryImpl(database)
+	EmplyRepository := repository.NewEmployeePerdinRepositoryImpl(database)
+	LaporanRepository := repository.NewPerdinLaporanRepositoryImpl(database)
+	documentRepository := repository.NewDocumentRepositoryImpl(database)
 
 	//service
 	todoService := service.NewTodoServiceImpl(&todoRepository)
@@ -34,6 +45,11 @@ func main() {
 	DepartmentService := service.NewDepartmentRepositoryImpl(&DepartmentRepository)
 	HandleService := service.NewHandleRepositoryImpl(&HandleRepository)
 	employeeService := service.NewEmployeeRepositoryImpl(&employeeRepository)
+	lumpsumService := service.NewLumpsumRepositoryImpl(&lumpsumRepository)
+	activityService := service.NewActivityServiceImpl(&activityRepository)
+	perdinService := service.NewPerdinServiceImpl(&perdinRepository, &telaahRepository, &sptRepository, &sppdRepository, &transportRepository, &hotelRepository, &EmplyRepository)
+	laporanService := service.NewPerdinLaporanServiceImpl(&LaporanRepository, &perdinRepository)
+	documentService := service.NewDocumentImpl(&documentRepository, &EmplyRepository, &perdinRepository)
 
 	//controller
 	todoController := controller.NewTodoController(&todoService)
@@ -41,6 +57,9 @@ func main() {
 	DepartmentController := controller.NewDepartmentController(&DepartmentService)
 	pangkatDepartmentController := controller.NewPangkatgGolController(&HandleService)
 	employeeController := controller.NewEmployeeController(&employeeService)
+	lumpsumController := controller.NewLumpsumController(&lumpsumService)
+	activityController := controller.NewActivityController(&activityService)
+	perdinController := controller.NewPerdinController(&perdinService, &laporanService, &documentService)
 
 	//setup fiber
 	app := fiber.New(configuration.NewFiberConfig())
@@ -56,6 +75,9 @@ func main() {
 	DepartmentController.Route(api)
 	pangkatDepartmentController.Route(api)
 	employeeController.Route(api)
+	lumpsumController.Route(api)
+	activityController.Route(api)
+	perdinController.Route(api)
 
 	err := app.Listen(os.Getenv("SERVER_PORT"))
 	exception.PanicLogging(err)

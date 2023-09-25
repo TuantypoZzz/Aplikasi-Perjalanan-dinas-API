@@ -1,0 +1,16 @@
+[10:40:16] 200 - 69.5716ms POST /api/v1/auth/login
+[10:47:09] 200 - 37.1707ms GET /api/v1/perjalanan-dinas/sppd
+[10:57:05] 200 - 31.265ms GET /api/v1/perjalanan-dinas/sppd
+[11:02:19] 200 - 29.6615ms GET /api/v1/perjalanan-dinas/sppd
+[11:05:39] 200 - 16.4778ms GET /api/v1/handle/
+[11:06:13] 200 - 15.7279ms GET /api/v1/department/
+[11:06:49] 200 - 26.362ms GET /api/v1/perjalanan-dinas/sppd
+[11:08:58] 200 - 33.9196ms GET /api/v1/perjalanan-dinas/sppd
+[11:09:40] 200 - 32.3916ms GET /api/v1/perjalanan-dinas/spt
+[11:11:17] 200 - 26.149ms GET /api/v1/perjalanan-dinas/sppd
+[11:16:17] 200 - 25.7695ms GET /api/v1/perjalanan-dinas/sppd
+[11:21:54] 200 - 24.4262ms GET /api/v1/perjalanan-dinas/sppd
+[11:22:50] 200 - 22.8279ms GET /api/v1/employees/
+[11:31:16] 200 - 18.419ms GET /api/v1/employees/
+[11:31:20] 200 - 36.9087ms GET /api/v1/perjalanan-dinas/sppd
+[11:31:47] 200 - 24.994ms GET /api/v1/perjalanan-dinas/sppd

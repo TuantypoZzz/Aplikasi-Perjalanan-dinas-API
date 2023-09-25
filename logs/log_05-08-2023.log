@@ -1,0 +1,8 @@
+[09:18:37] 200 - 98.5615ms POST /api/v1/auth/login
+[09:19:38] 200 - 17.8492ms GET /api/v1/department/
+[09:20:33] 401 -      0s GET /api/v1/employees/801fad52-538c-4e4e-8fe1-170c341a87b4
+[09:20:53] 200 - 23.7189ms GET /api/v1/employees/
+[09:21:07] 200 - 24.8345ms GET /api/v1/kegiatan/
+[09:21:20] 200 - 36.9538ms GET /api/v1/perjalanan-dinas/telaah
+[09:27:19] 200 - 23.8704ms GET /api/v1/perjalanan-dinas/telaah
+[10:02:59] 200 - 37.4023ms GET /api/v1/employees/

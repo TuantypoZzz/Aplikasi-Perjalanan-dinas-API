@@ -1,0 +1,4 @@
+[14:56:47] 200 - 74.2408ms POST /api/v1/auth/login
+[14:57:23] 400 - 31.5053ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:58:00] 400 - 29.7286ms POST /api/v1/perjalanan-dinas/laporan-perdin
+[14:58:45] 200 - 26.5076ms POST /api/v1/perjalanan-dinas/laporan-perdin

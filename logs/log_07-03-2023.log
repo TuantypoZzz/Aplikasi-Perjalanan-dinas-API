@@ -1,0 +1,10 @@
+[13:12:20] 401 - 503.9µs POST /api/v1/perjalanan-dinas/dokumen-perdin
+[13:12:33] 200 - 87.2295ms POST /api/v1/auth/login
+[13:13:00] 400 - 16.9986ms POST /api/v1/perjalanan-dinas/dokumen-perdin
+[13:13:43] 400 - 11.7032ms POST /api/v1/perjalanan-dinas/dokumen-perdin
+[13:13:57] 200 - 86.6482ms POST /api/v1/perjalanan-dinas/dokumen-perdin
+[13:15:05] 200 - 79.0651ms POST /api/v1/perjalanan-dinas/dokumen-perdin
+[13:16:56] 400 - 19.8846ms POST /api/v1/perjalanan-dinas/dokumen-perdin
+[14:00:30] 200 - 20.3692ms PUT /api/v1/employees/80996e34-3d10-4a42-b2c8-c79cc19ebf7a
+[14:12:59] 200 - 20.0066ms PUT /api/v1/employees/80996e34-3d10-4a42-b2c8-c79cc19ebf7a
+[14:20:18] 200 - 22.3596ms PUT /api/v1/employees/80996e34-3d10-4a42-b2c8-c79cc19ebf7a
