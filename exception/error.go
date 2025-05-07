@@ -48,7 +48,7 @@ func FailCopyFile(err interface{}) {
 
 func FailDeleteFile(err interface{}) {
 	if err != nil {
-		fmt.Println("Failed to read file", err)
+		fmt.Println("Failed to read delete file", err)
 		panic(err)
 	}
 }

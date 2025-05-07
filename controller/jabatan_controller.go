@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"golang-todo-app/entity"
 	"golang-todo-app/exception"
 	"golang-todo-app/model"
@@ -34,6 +35,7 @@ func (controller DepartmentController) Create(c *fiber.Ctx) error {
 	user := c.Locals("userData").(entity.User)
 
 	response := controller.DepartmentService.Create(c.Context(), request, user)
+	fmt.Println("request", request)
 	return c.JSON(model.GeneralResponse{
 		Code:    200,
 		Message: "Data Has been Created",

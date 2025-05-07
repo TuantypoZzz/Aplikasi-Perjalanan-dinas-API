@@ -19,8 +19,12 @@ import (
 
 func main() {
 	database := configuration.NewDatabase()
+	redis := configuration.NewRedis()
+	rabbitMQConn := configuration.NewRabbitMQ()
+	defer rabbitMQConn.Close()
 
 	//repository
+	cacheRepository := repository.NewCacheRepository(redis)
 	todoRepository := repository.NewTodoRepositoryImpl(database)
 	userRepository := repository.NewUserRepositoryImpl(database)
 	roleRepository := repository.NewRoleRepositoryImpl(database)
@@ -41,8 +45,8 @@ func main() {
 
 	//service
 	todoService := service.NewTodoServiceImpl(&todoRepository)
-	authService := service.NewAuthServiceImpl(&userRepository, &roleRepository)
-	DepartmentService := service.NewDepartmentRepositoryImpl(&DepartmentRepository)
+	authService := service.NewAuthServiceImpl(&userRepository, &roleRepository, &cacheRepository)
+	DepartmentService := service.NewDepartmentRepositoryImpl(&DepartmentRepository, &cacheRepository, rabbitMQConn)
 	HandleService := service.NewHandleRepositoryImpl(&HandleRepository)
 	employeeService := service.NewEmployeeRepositoryImpl(&employeeRepository)
 	lumpsumService := service.NewLumpsumRepositoryImpl(&lumpsumRepository)
@@ -61,6 +65,9 @@ func main() {
 	activityController := controller.NewActivityController(&activityService)
 	perdinController := controller.NewPerdinController(&perdinService, &laporanService, &documentService)
 
+	// Mulai consumer RabbitMQ
+	DepartmentService.StartRabbitMQConsumer("department_queue")
+
 	//setup fiber
 	app := fiber.New(configuration.NewFiberConfig())
 	app.Use(recover.New())
@@ -70,7 +77,7 @@ func main() {
 	//routing
 	api := app.Group("/api/v1")
 	authController.Route(api)
-	api.Use(middleware.JwtCustomStrategy(userRepository))
+	api.Use(middleware.JwtCustomStrategy(cacheRepository))
 	todoController.Route(api)
 	DepartmentController.Route(api)
 	pangkatDepartmentController.Route(api)

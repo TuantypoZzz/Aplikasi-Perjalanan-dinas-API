@@ -13,3 +13,8 @@ type Activity struct {
 	PejabatPPTKId uuid.UUID
 	Employee      Employee `gorm:"foreignKey:PejabatPPTKId"`
 }
+
+type ActivityWithEmployeeName struct {
+	Activity
+	PejabatName string `gorm:"column:name"`
+}
